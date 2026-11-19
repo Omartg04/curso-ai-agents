@@ -6,7 +6,7 @@ load_dotenv()
 # Paso 2: importar el agente, el "conector" al modelo y el decorador de herramientas
 # Nota: `ManagedAgent` se eliminó de smolagents. Ahora el especialista es un
 # CodeAgent con `name` + `description`, y se pasa al manager en `managed_agents`.
-from smolagents import CodeAgent, DuckDuckGoSearchTool, LiteLLMModel, tool
+from smolagents import CodeAgent, DuckDuckGoSearchTool, LiteLLMModel, VisitWebpageTool, tool
 
 # Paso 3: elegir el modelo (el "cerebro" del agente).
 # LiteLLM lee ANTHROPIC_API_KEY automáticamente del entorno.
@@ -38,7 +38,8 @@ def check_inventory(product_name: str) -> str:
 # Paso 5: el "Especialista Web". El name y la description son lo que el
 # manager ve de él (igual que el docstring de una herramienta).
 web_agent = CodeAgent(
-    tools=[DuckDuckGoSearchTool()],
+    # DuckDuckGo encuentra páginas; VisitWebpageTool las abre y las lee completas.
+    tools=[DuckDuckGoSearchTool(), VisitWebpageTool()],
     model=model,
     add_base_tools=False,
     name="web_searcher",
