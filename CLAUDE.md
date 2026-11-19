@@ -15,12 +15,13 @@ Curso práctico de AI Agents y Vibe Coding. El usuario está aprendiendo: define
 ## Arquitectura
 - **Patrón Code-Act:** `CodeAgent` escribe y ejecuta Python en cada paso; llama a las herramientas como funciones y termina con `final_answer(...)`.
 - **Custom Tools:** funciones con `@tool`. El docstring con sección `Args:` es obligatorio, porque es lo único que el agente ve de la herramienta.
-- **Delegación a agentes especialistas:** (próximas unidades) un agente gestor que delega tareas en agentes especializados.
+- **Delegación a agentes especialistas (Unidad 4):** un agente gestor (manager) delega tareas en agentes especialistas. El especialista es un `CodeAgent` con `name` y `description`, y se pasa al manager con `managed_agents=[...]`. `ManagedAgent` está obsoleto: no lo uses.
 - Usa `add_base_tools=False` por defecto: el agente solo recibe las herramientas que se le pasan de forma explícita.
 
 ## Notas de entorno
 - **Modelo por defecto:** `LiteLLMModel(model_id="anthropic/claude-haiku-5-5")`. No uses modelos más grandes salvo que el usuario lo pida.
 - **Ejecutar:** `.venv/bin/python src/main_agent.py`
+- **Logs de ejecución:** cada ejecución de un agente se guarda en un archivo nuevo de `logs/`, con el nombre `logs/unidad<N>_<NN>_<descripcion>.txt` (por ejemplo, `logs/unidad4_02_visitwebpage.txt`). Usa `> archivo 2>&1` para guardar también los errores. No sobrescribas los logs anteriores. El usuario usa estos archivos como apuntes del curso y se suben a git.
 - **Instalar paquetes:** `.venv/bin/pip install ...` y luego regenerar `.venv/bin/pip freeze > requirements.txt`
 - `DuckDuckGoSearchTool` necesita `ddgs` (`smolagents[toolkit]`) y a veces falla con "No results found" por límite de uso: es un problema transitorio, no un bug del código.
 - `.env` y `.venv/` están en `.gitignore`. Nunca muestres ni subas las claves.
