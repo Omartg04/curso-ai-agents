@@ -6,7 +6,13 @@ load_dotenv()
 # Paso 2: importar el agente, el "conector" al modelo y el decorador de herramientas
 # Nota: `ManagedAgent` se eliminó de smolagents. Ahora el especialista es un
 # CodeAgent con `name` + `description`, y se pasa al manager en `managed_agents`.
-from smolagents import CodeAgent, DuckDuckGoSearchTool, LiteLLMModel, VisitWebpageTool, tool
+from smolagents import (
+    CodeAgent,
+    DuckDuckGoSearchTool,
+    LiteLLMModel,
+    VisitWebpageTool,
+    tool,
+)
 
 # Paso 3: elegir el modelo (el "cerebro" del agente).
 # LiteLLM lee ANTHROPIC_API_KEY automáticamente del entorno.

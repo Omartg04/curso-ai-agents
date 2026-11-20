@@ -30,3 +30,6 @@ Curso práctico de AI Agents y Vibe Coding. El usuario está aprendiendo: define
 - **Antes de escribir código, explica siempre brevemente tu razonamiento:** qué vas a cambiar y por qué.
 - Si una instrucción del usuario usa una API o un modelo obsoleto, avísale y usa la alternativa vigente.
 - Haz commit y push solo cuando el usuario lo pida.
+
+## Progreso del curso
+- **Unidad 4 completada:** sistema multi-agente funcional. El manager (`CodeAgent` con la herramienta `check_inventory`) consulta el stock y delega la búsqueda web en el especialista `web_searcher` (`DuckDuckGoSearchTool` + `VisitWebpageTool`), que abre las páginas y lee los datos actualizados. Las ejecuciones están en `logs/unidad4_01_multiagente.txt` y `logs/unidad4_02_visitwebpage.txt`.
